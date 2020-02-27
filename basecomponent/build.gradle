@@ -1,0 +1,82 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.finalwy'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.0"
+
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "PROVIDER_NAME", "\"com.chinaso.${APP_PACKAGE_NAME}.weburl\""
+            buildConfigField "String", "PROVIDER_CONFIG", "\"com.chinaso.${APP_PACKAGE_NAME}.file\""
+            manifestPlaceholders = [
+                    weburl_authorities: "com.chinaso.${APP_PACKAGE_NAME}.weburl",
+                    file_authorities  : "com.chinaso.${APP_PACKAGE_NAME}.file",
+            ]
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "PROVIDER_NAME", "\"com.chinaso.${APP_PACKAGE_NAME}.weburl.develop\""
+            buildConfigField "String", "PROVIDER_CONFIG", "\"com.chinaso.${APP_PACKAGE_NAME}.file.develop\""
+            manifestPlaceholders = [
+                    weburl_authorities: "com.chinaso.${APP_PACKAGE_NAME}.weburl.develop",
+                    file_authorities  : "com.chinaso.${APP_PACKAGE_NAME}.file.develop",
+            ]
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    api "com.jakewharton:butterknife:10.2.0"
+    api "com.jakewharton:butterknife-compiler:10.2.0"
+    api "com.android.support:cardview-v7:28.0.0"
+    api "com.android.support:recyclerview-v7:28.0.0"
+
+    //Rxbus
+    api 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
+    //网络请求相关
+    api "io.reactivex.rxjava2:rxandroid:2.0.1"
+    api "io.reactivex.rxjava2:rxjava:2.1.8"
+    api "com.squareup.retrofit2:retrofit:2.4.0"
+    api "com.squareup.retrofit2:converter-gson:2.4.0"
+    api "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
+    api "com.squareup.okhttp3:logging-interceptor:3.8.1"
+    api "com.squareup.okhttp3:okhttp:3.8.1"
+    api "com.squareup.okhttp:okhttp-urlconnection:2.2.0"
+    api "com.squareup.picasso:picasso:2.4.0"
+    //处理rxjava内存泄漏
+    api "com.trello.rxlifecycle2:rxlifecycle:2.2.1"
+    api "com.trello.rxlifecycle2:rxlifecycle-android:2.2.1"
+    api "com.trello.rxlifecycle2:rxlifecycle-components:2.2.1"
+    api 'com.tencent.tbs.tbssdk:sdk:43697'
+    api 'com.finalwy.basepermissionlib:basepermissionlib:1.0.0'
+}

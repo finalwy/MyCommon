@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">basecomponent</string>
+
+    <!--版本更新相关-->
+    <string name="base_dialog_app_upgrade_title">版本更新</string>
+    <string name="base_dialog_app_cancel_upgrade">暂不更新</string>
+    <string name="base_dialog_app_sure_upgrade">立即更新</string>
+    <string name="base_permission_tip">更新app需要读写文件权限</string>
+    <string name="base_dialog_upgrade_check_down_process">通知栏查看下载进度</string>
+    <string name="base_dialog_upgrade_check_down_process_no_permission">您当前需允许显示通知栏，方可查看通知栏下载进度</string>
+    <string name="base_update_downloading">正在下载...</string>
+</resources>
