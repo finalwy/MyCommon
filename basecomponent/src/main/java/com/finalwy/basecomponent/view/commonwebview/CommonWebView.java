@@ -34,7 +34,6 @@ import com.finalwy.basecomponent.utils.LogUtil;
 import com.finalwy.basecomponent.utils.RegexUtils;
 import com.finalwy.basecomponent.utils.SaveImage;
 import com.finalwy.basecomponent.utils.ToastUtil;
-import com.finalwy.basepermissionlib.BasePermission;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
@@ -454,16 +453,16 @@ public class CommonWebView extends WebView {
         public boolean shouldOverrideUrlLoading(com.tencent.smtt.sdk.WebView view, String url) {
             if (url == null) return false;
             if (url.contains("tel:")) {
-                if (BasePermission.build().hasPermission(mContext, Manifest.permission.CALL_PHONE)) {
-                    String mobile = getPhoneNumber(url);
-                    if (!TextUtils.isEmpty(mobile)) {//判断是否为空
-                        Uri uri = Uri.parse("tel:" + mobile);
-                        Intent intent = new Intent(Intent.ACTION_DIAL, uri);
-                        activity.startActivity(intent);
-                    }
-                } else {
-                    new ToastUtil(mContext).showToast("需要权限");
-                }
+//                if (BasePermission.build().hasPermission(mContext, Manifest.permission.CALL_PHONE)) {
+//                    String mobile = getPhoneNumber(url);
+//                    if (!TextUtils.isEmpty(mobile)) {//判断是否为空
+//                        Uri uri = Uri.parse("tel:" + mobile);
+//                        Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+//                        activity.startActivity(intent);
+//                    }
+//                } else {
+//                    new ToastUtil(mContext).showToast("需要权限");
+//                }
                 return true;
             } else if (url.contains("mailto:")) {
                 Intent data = new Intent(Intent.ACTION_SENDTO);
