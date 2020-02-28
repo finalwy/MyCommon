@@ -6,6 +6,6 @@
 		}
 	}
   	dependencies {
-	        implementation 'com.github.finalwy:MyCommon:Tag'
+	        implementation 'com.github.finalwy:MyCommon:v1.0.9'
 	}
 
