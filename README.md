@@ -9,20 +9,30 @@
 	        implementation 'com.github.finalwy:MyCommon:v1.0.9'
 	}
 
-library Module：
+# library Module：
 
-base (base)
+·base (base)
 
-BaseActivity.java
-BaseApplication.java
-BaseFragment.java
-BasePresenter.java
-BasePresenterImpl.java
-BaseView.java
-LazyBaseFragment.java
-RxBus.java
-RxEvent.java
+	BaseActivity.java
+	
+	BaseApplication.java
 
-constant(content)
-ConstantHttpCode.java
-RxEventConstant.java
+	BaseFragment.java
+
+	BasePresenter.java
+
+	BasePresenterImpl.java
+
+	BaseView.java
+
+	LazyBaseFragment.java
+
+	RxBus.java
+
+	RxEvent.java
+
+·constant(content)
+
+	ConstantHttpCode.java
+	
+	RxEventConstant.java
