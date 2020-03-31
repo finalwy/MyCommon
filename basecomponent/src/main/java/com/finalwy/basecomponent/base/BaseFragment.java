@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 
 import com.finalwy.basecomponent.utils.ContinuationClickUtils;
 import com.finalwy.basecomponent.utils.ToastUtil;
-import com.trello.rxlifecycle2.LifecycleTransformer;
-import com.trello.rxlifecycle2.android.FragmentEvent;
-import com.trello.rxlifecycle2.components.RxFragment;
+import com.trello.rxlifecycle3.LifecycleTransformer;
+import com.trello.rxlifecycle3.android.FragmentEvent;
+import com.trello.rxlifecycle3.components.RxFragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -8,7 +8,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -74,8 +74,8 @@ dependencies {
     api "com.squareup.okhttp:okhttp-urlconnection:2.2.0"
     api "com.squareup.picasso:picasso:2.4.0"
     //处理rxjava内存泄漏
-    api "com.trello.rxlifecycle2:rxlifecycle:2.2.1"
-    api "com.trello.rxlifecycle2:rxlifecycle-android:2.2.1"
-    api "com.trello.rxlifecycle2:rxlifecycle-components:2.2.1"
+    api 'com.trello.rxlifecycle3:rxlifecycle:3.1.0'
+    api 'com.trello.rxlifecycle3:rxlifecycle-android:3.1.0'
+    api 'com.trello.rxlifecycle3:rxlifecycle-components:3.1.0'
     api 'com.tencent.tbs.tbssdk:sdk:43697'
 }

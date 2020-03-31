@@ -8,8 +8,8 @@ import android.util.Log;
 
 import com.finalwy.basecomponent.utils.ContinuationClickUtils;
 import com.finalwy.basecomponent.utils.ToastUtil;
-import com.trello.rxlifecycle2.LifecycleTransformer;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle3.LifecycleTransformer;
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
 import androidx.annotation.Nullable;
 import butterknife.ButterKnife;

@@ -1,6 +1,5 @@
 package com.finalwy.basecomponent.base;
-
-import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle3.LifecycleTransformer;
 
 /**
  * @author wy
