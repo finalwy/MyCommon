@@ -50,11 +50,11 @@ public class CommonWebView extends WebView {
     /**
      * 视频全屏参数
      */
-    protected static FrameLayout.LayoutParams COVER_SCREEN_PARAMS = null;
+    protected static LayoutParams COVER_SCREEN_PARAMS = null;
     private String TAG = CommonWebView.class.getSimpleName();
     private WebViewProgressBar progressBar;//进度条的矩形（进度线）
     private Handler handler;
-    private com.tencent.smtt.sdk.WebView mWebView;
+    private WebView mWebView;
     private JSBridge mJsBridge;
     private Context mContext;
     private Activity activity;
@@ -189,7 +189,7 @@ public class CommonWebView extends WebView {
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         //http https混合
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            webSettings.setMixedContentMode(com.tencent.smtt.sdk.WebSettings.LOAD_NORMAL);
+            webSettings.setMixedContentMode(WebSettings.LOAD_NORMAL);
         }
         // 清除缓存
         mWebView.clearCache(true);
@@ -234,14 +234,14 @@ public class CommonWebView extends WebView {
 
         if (checkDeviceHasNavigationBar(mContext)) {
             if (!flag) {//竖屏 if (!flag) {//竖屏
-                COVER_SCREEN_PARAMS = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                COVER_SCREEN_PARAMS = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 COVER_SCREEN_PARAMS.setMargins(0, 0, 0, getNavigationBarHeight());
             } else {//横屏
-                COVER_SCREEN_PARAMS = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                COVER_SCREEN_PARAMS = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 COVER_SCREEN_PARAMS.setMargins(getNavigationBarHeight() / 2, 0, getNavigationBarHeight(), 0);
             }
         } else {
-            COVER_SCREEN_PARAMS = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            COVER_SCREEN_PARAMS = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         }
 
         fullscreenContainer.addView(view, COVER_SCREEN_PARAMS);
@@ -359,11 +359,11 @@ public class CommonWebView extends WebView {
     /**
      * 长按下载图片
      */
-    private class MyOnLongClickListener implements View.OnLongClickListener {
+    private class MyOnLongClickListener implements OnLongClickListener {
         @Override
         public boolean onLongClick(View v) {
 //            HitTestResult result = ((WebView) v).getHitTestResult();
-            com.tencent.smtt.sdk.WebView.HitTestResult result = mWebView.getHitTestResult();
+            HitTestResult result = mWebView.getHitTestResult();
             if (result != null) {
                 int type = result.getType();
                 if (type == HitTestResult.IMAGE_TYPE
@@ -395,7 +395,7 @@ public class CommonWebView extends WebView {
          * @param newProgress 新进度
          */
         @Override
-        public void onProgressChanged(com.tencent.smtt.sdk.WebView view, int newProgress) {
+        public void onProgressChanged(WebView view, int newProgress) {
             if (newProgress == 100) {
                 progressBar.setProgress(100);
                 handler.postDelayed(runnable, 200);//0.2秒后隐藏进度条
@@ -423,7 +423,7 @@ public class CommonWebView extends WebView {
         @Override
         public View getVideoLoadingProgressView() {
             FrameLayout frameLayout = new FrameLayout(mContext);
-            frameLayout.setLayoutParams(new FrameLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
+            frameLayout.setLayoutParams(new LayoutParams(MATCH_PARENT, MATCH_PARENT));
             return frameLayout;
         }
 
@@ -438,7 +438,7 @@ public class CommonWebView extends WebView {
          * @param url
          */
         @Override
-        public void onLoadResource(com.tencent.smtt.sdk.WebView view, String url) {
+        public void onLoadResource(WebView view, String url) {
             super.onLoadResource(view, url);
         }
 
@@ -450,7 +450,7 @@ public class CommonWebView extends WebView {
          * @return
          */
         @Override
-        public boolean shouldOverrideUrlLoading(com.tencent.smtt.sdk.WebView view, String url) {
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
             if (url == null) return false;
             if (url.contains("tel:")) {
 //                if (BasePermission.build().hasPermission(mContext, Manifest.permission.CALL_PHONE)) {
@@ -495,7 +495,7 @@ public class CommonWebView extends WebView {
          * @param favicon
          */
         @Override
-        public void onPageStarted(com.tencent.smtt.sdk.WebView view, String url, Bitmap favicon) {
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
         }
 
@@ -506,14 +506,14 @@ public class CommonWebView extends WebView {
          * @param url
          */
         @Override
-        public void onPageFinished(com.tencent.smtt.sdk.WebView view, String url) {
+        public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             // 关闭图片加载阻塞
             view.getSettings().setBlockNetworkImage(false);
         }
 
         @Override
-        public void onReceivedError(com.tencent.smtt.sdk.WebView webView, int errorCode, String description, String failingUrl) {
+        public void onReceivedError(WebView webView, int errorCode, String description, String failingUrl) {
             super.onReceivedError(webView, errorCode, description, failingUrl);
 //            StatusUtils.create(webView).fail(view -> {
 //                StatusUtils.create(webView).showLoading();
