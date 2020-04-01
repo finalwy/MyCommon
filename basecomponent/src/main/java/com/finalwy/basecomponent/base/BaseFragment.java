@@ -11,7 +11,7 @@ import com.finalwy.basecomponent.utils.ContinuationClickUtils;
 import com.finalwy.basecomponent.utils.ToastUtil;
 import com.trello.rxlifecycle3.LifecycleTransformer;
 import com.trello.rxlifecycle3.android.FragmentEvent;
-import com.trello.rxlifecycle3.components.RxFragment;
+import com.trello.rxlifecycle3.components.support.RxFragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
